@@ -11,6 +11,11 @@ function check(){
     var curr= Number(currentPrice.value)
     
     calculateProfitAndLoss(ip,qty,curr)
+    if(!ip || !qty || !curr){
+        outputDiv.innerText = 'please fill all the fields'
+    }else if(ip<0 || qty<0 || curr<0){
+        outputDiv.innerText = 'The value should not be negative'
+    }
 
 
 }
@@ -18,6 +23,8 @@ function check(){
 
 
 function calculateProfitAndLoss(initial,quantity,current){
+   
+   
     if(current>initial){
         var profit = (current-initial)*quantity
         var profitPercentage = (profit/initial)*100
@@ -28,8 +35,10 @@ function calculateProfitAndLoss(initial,quantity,current){
         var lossPercentage = (loss/initial)*100
         outputDiv.innerText = ` the loss is ${loss} and loss percentage is ${lossPercentage}%`
     }
+    
+
     else{
-        outputDiv.innerText = `no pain no gain`
+        outputDiv.innerText = `No pain No gain`
     }
 }
 
